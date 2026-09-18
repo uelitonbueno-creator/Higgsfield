@@ -1,0 +1,43 @@
+name: Import open-higgsfield
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/import-open-higgsfield.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Clone source repository
+        run: |
+          git clone --depth 1 https://github.com/wide-trace/open-higgsfield.git /tmp/open-higgsfield
+
+      - name: Mirror source into this repository
+        run: |
+          rsync -a --delete --exclude='.git' /tmp/open-higgsfield/ ./
+
+      - name: Commit imported project
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Import wide-trace/open-higgsfield"
+          git push origin HEAD:main
