@@ -1,0 +1,18 @@
+{
+  "name": "Dança no palco — personagem de referência",
+  "model": "seedance-2.5",
+  "surface": "video",
+  "mediaRole": "reference",
+  "prompt": "Use the provided adult woman as the exact visual identity reference. Create a realistic full-body cinematic video of the same woman dancing gracefully at the center of an elegant live-show stage. Preserve her recognizable face, freckles, long copper-red hair, body proportions, white flowing dress, jewelry and overall appearance. Warm golden spotlights illuminate her from above and behind, with subtle moving stage beams, soft haze, dark audience bokeh and a polished stage floor. She performs a natural, confident rhythmic dance with coordinated steps, arm movements and gentle turns; the white dress and long hair move naturally with the motion. The camera makes a slow smooth dolly-in while keeping her full body visible. Photorealistic motion, realistic anatomy, consistent face and hands, physically natural fabric movement. No cuts, no wardrobe change, no face morphing, no duplicated body parts, no extra fingers or limbs, no sudden camera jumps.",
+  "settings": {
+    "aspectRatio": "9:16",
+    "duration": 8,
+    "resolution": "720p",
+    "generateAudio": false,
+    "outputFormat": "mp4"
+  },
+  "notes": [
+    "Attach the source portrait as a Reference image, not Start frame, so the scene can change to a stage while preserving identity.",
+    "If stronger identity retention is needed, generate a second pass with Kling 3 Pro using the best first frame from this result."
+  ]
+}
